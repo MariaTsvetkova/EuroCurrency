@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:id="@+id/linearLayout">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal" 
+        android:background="@color/peru">
+        
+      
+    <TextView  
+		 android:layout_width="wrap_content"   
+		 android:layout_height="wrap_content"  
+		 android:padding="5dp"  
+		 android:text="EURO"
+		 android:layout_weight="1">  
+	</TextView> 
+	
+    <EditText 
+        android:id="@+id/euroValue"
+		android:layout_width="wrap_content"   
+		android:layout_height="wrap_content"
+		android:digits="0123456789."
+		android:inputType="numberDecimal"
+		android:layout_weight="1"
+		android:focusable="true"
+		android:focusableInTouchMode="true"  
+        />
+	<TextView  
+		 android:layout_width="wrap_content"   
+		 android:layout_height="wrap_content"  
+		 android:padding="5dp"  
+		 android:textSize="25sp"
+		 android:text="=" 
+		 android:layout_weight="1"
+		 android:textColor="@color/blue">  
+	</TextView>
+	<TextView 
+		android:id="@+id/selectedCur"   
+		android:layout_width="wrap_content"   
+		android:layout_height="wrap_content"  
+		android:padding="5dp"  
+		android:text="Currency" 
+		android:layout_weight="1">  
+	</TextView> 
+
+	<TextView 
+		android:id="@+id/calculatedValue"   
+		android:layout_width="wrap_content"   
+		android:layout_height="wrap_content"  
+		android:padding="5dp"  
+		android:textSize="25sp"
+		android:text="0.0" 
+		android:layout_weight="1"
+		android:textColor="@color/blue">  
+	</TextView> 
+    
+
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/calculatorButton"
+		android:layout_width="wrap_content"   
+		android:layout_height="wrap_content"  
+		android:gravity="right"
+		android:layout_gravity="right"
+		android:background="@drawable/borkderbackground"
+		android:clickable="true"
+		android:focusable="true"
+		 >
+	
+	    <ImageView
+	        android:layout_width="wrap_content"   
+			android:layout_height="wrap_content"
+	        android:src="@drawable/calcpic"/>
+
+		<TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Calculator"
+		    android:textColor="@color/darkblue"
+		    android:textSize="20sp" >
+  
+		</TextView>
+    </LinearLayout>
+	<TextView
+    	android:id="@+id/timeTxtView"
+    	android:layout_width="match_parent"
+   		android:layout_height="wrap_content"
+    	android:text="TIME"
+    	android:gravity="center"
+    	android:textSize="25sp" 
+    	android:background="#282828"
+    	android:textColor="#F8F8F8"/>
+
+	<ListView android:layout_width="fill_parent"   
+      android:layout_height="fill_parent"   
+      android:id="@+id/mainListView"
+      android:listSelector="@android:color/transparent">  
+    </ListView> 
+
+</LinearLayout>

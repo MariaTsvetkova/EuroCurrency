@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <color name="red">#ff00</color>
+ <color name="green">#f0f0</color>
+ <color name="blue">#f00f</color>
+ <color name="white">#ffff</color>
+ <color name="black">#f000</color> 
+ <color name="gray">#B8B8B8</color>
+ <color name="darkblue">#00008B</color>
+ <color name="yellow">#FCFFE8</color>
+ <color name="peru">#CD853F</color>
+ <color name="peachPuff">#FFDAB9</color>
+    
+</resources>
