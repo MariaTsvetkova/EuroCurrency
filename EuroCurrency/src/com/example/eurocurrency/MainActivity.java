@@ -50,13 +50,20 @@ public class MainActivity extends Activity {
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
+		if (android.os.Build.VERSION.SDK_INT > 9) {
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+					.permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
+
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.main);
-		if (android.os.Build.VERSION.SDK_INT > 9) {
-			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-					.detectNetwork().penaltyDialog().build());
-		}
+		// if (android.os.Build.VERSION.SDK_INT > 9) {
+		// StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+		// .detectNetwork().penaltyDialog().build());
+		// }
 		selectedRate = (TextView) findViewById(R.id.selectedCur);
 		currencuResultValue = (TextView) findViewById(R.id.calculatedValue);
 		euroValue = (EditText) findViewById(R.id.euroValue);
@@ -216,7 +223,6 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-
 		if (requestCode == this.requestCode) {
 			if (resultCode == RESULT_OK) {
 				String message = data.getStringExtra("euroValue");

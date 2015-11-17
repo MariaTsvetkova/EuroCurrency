@@ -36,7 +36,9 @@ public class Calculator extends Activity implements OnClickListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.calculator);
 
 		initButtons();
@@ -292,6 +294,7 @@ public class Calculator extends Activity implements OnClickListener {
 			double euro = Double.parseDouble(euroValue);
 			double curValue = Double.parseDouble(currencuResultForOneEur);
 			currencyValue = percentageFormat.format(euro * curValue);
+
 		} catch (Exception e) {
 
 		}
