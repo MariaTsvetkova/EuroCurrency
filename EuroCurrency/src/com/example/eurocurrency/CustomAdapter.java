@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 public class CustomAdapter extends BaseAdapter {
 
-
 	private Activity activity;
 	private ArrayList data;
 	private static LayoutInflater inflater = null;
@@ -74,7 +73,8 @@ public class CustomAdapter extends BaseAdapter {
 			holder = (ViewHolder) vi.getTag();
 
 		if (data.size() <= 0) {
-			holder.currency.setText("No Data");
+			holder.currency.setText("No Data, check your internet connection");
+			holder.rate.setText("");
 
 		} else {
 
@@ -84,8 +84,9 @@ public class CustomAdapter extends BaseAdapter {
 			holder.currency.setText(tempValues.getCurrency());
 			holder.rate.setText(tempValues.getRate());
 
-			vi.setOnClickListener(new OnItemClickListener(position));
+			// vi.setOnClickListener(new OnItemClickListener(position));
 		}
+		vi.setOnClickListener(new OnItemClickListener(position));
 		return vi;
 	}
 

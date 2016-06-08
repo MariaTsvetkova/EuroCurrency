@@ -85,9 +85,10 @@ public class MainActivity extends Activity {
 				switch (xpp.getEventType()) {
 
 				case XmlPullParser.START_TAG:
-					Log.d(LOG_TAG, "START_TAG: name = " + xpp.getName()
-							+ ", depth = " + xpp.getDepth() + ", attrCount = "
-							+ xpp.getAttributeCount());
+					Log.d(LOG_TAG,
+							"START_TAG: name = " + xpp.getName() + ", depth = "
+									+ xpp.getDepth() + ", attrCount = "
+									+ xpp.getAttributeCount());
 					tmp = "";
 					rate = "";
 					currency = "";
@@ -141,10 +142,10 @@ public class MainActivity extends Activity {
 
 				} else if (!selectedRate.getText().equals("Currency")) {
 					double euro = 0.0;
-					euro = Double.parseDouble(euroValue.getText().toString()
-							.trim());
-					currencuResultValue.setText(percentageFormat.format(euro
-							* curRate));
+					euro = Double
+							.parseDouble(euroValue.getText().toString().trim());
+					currencuResultValue
+							.setText(percentageFormat.format(euro * curRate));
 
 				}
 
@@ -173,8 +174,8 @@ public class MainActivity extends Activity {
 							Calculator.class);
 					i.putExtra("EuroValue", euroValue.getText().toString());
 					i.putExtra("Currencu", selectedRate.getText());
-					i.putExtra("CurrencuValue", currencuResultValue.getText()
-							.toString());
+					i.putExtra("CurrencuValue",
+							currencuResultValue.getText().toString());
 					i.putExtra("CurrencuResultForOneEur",
 							currencuResultForOneEur);
 					startActivityForResult(i, requestCode);
@@ -199,29 +200,39 @@ public class MainActivity extends Activity {
 	}
 
 	public void onItemClick(int mPosition) {
-		Currency tempValues = (Currency) currencyList.get(mPosition);
-		selectedRate = (TextView) findViewById(R.id.selectedCur);
-		currencuResultValue = (TextView) findViewById(R.id.calculatedValue);
-		euroValue = (EditText) findViewById(R.id.euroValue);
-		if (!TextUtils.isEmpty(euroValue.getText().toString())) {
-			double euro = 0.0;
-			double curValue = 0.0;
-			euro = Double.parseDouble(euroValue.getText().toString().trim());
-			curValue = Double.parseDouble(tempValues.getRate().trim());
-			currencuResultForOneEur = String.valueOf(curValue);
-			selectedRate.setText(tempValues.getCurrency());
-			currencuResultValue.setText(percentageFormat
-					.format(euro * curValue));
-			curRate = curValue;
+		if (currencyList.isEmpty() || currencyList.size() == 0) {
+			Intent intent = getIntent();
+			finish();
+			startActivity(intent);
+
 		} else {
-			Toast.makeText(customListView, "Put on value to the field",
-					Toast.LENGTH_LONG).show();
+
+			Currency tempValues = (Currency) currencyList.get(mPosition);
+			selectedRate = (TextView) findViewById(R.id.selectedCur);
+			currencuResultValue = (TextView) findViewById(R.id.calculatedValue);
+			euroValue = (EditText) findViewById(R.id.euroValue);
+			if (!TextUtils.isEmpty(euroValue.getText().toString())) {
+				double euro = 0.0;
+				double curValue = 0.0;
+				euro = Double
+						.parseDouble(euroValue.getText().toString().trim());
+				curValue = Double.parseDouble(tempValues.getRate().trim());
+				currencuResultForOneEur = String.valueOf(curValue);
+				selectedRate.setText(tempValues.getCurrency());
+				currencuResultValue
+						.setText(percentageFormat.format(euro * curValue));
+				curRate = curValue;
+			} else {
+				Toast.makeText(customListView, "Put on value to the field",
+						Toast.LENGTH_LONG).show();
+			}
 		}
 
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == this.requestCode) {
 			if (resultCode == RESULT_OK) {
